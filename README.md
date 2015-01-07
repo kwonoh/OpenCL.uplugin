@@ -21,13 +21,18 @@ Installation
 1. Install NVIDIA Graphics Driver and [Intel OpenCL runtime](https://software.intel.com/en-us/articles/opencl-drivers).
 2. Copy "OpenCL" folder to "Plugins" folder under your project directory.
 
-### Mac
+### OS X
 
 1. Copy "OpenCL" folder to "Plugins" folder under your project directory.
 
 Screenshots
 ----------------------
 
+### Windows
+![Log Screenshots on Windows](https://raw.githubusercontent.com/kwonoh/OpenCL-UE4Plugin/gh-pages/images/opencl-ue4plugin-log-win.png)
+
+### OS X
+![Log Screenshots on OS X](https://raw.githubusercontent.com/kwonoh/OpenCL-UE4Plugin/gh-pages/images/opencl-ue4plugin-log-osx.png)
 
 Legal info
 ----------------------
