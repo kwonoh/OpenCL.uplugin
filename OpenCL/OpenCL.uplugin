@@ -4,11 +4,11 @@
 	"FriendlyName" : "OpenCL Plugin",
 	"Version" : 1,
 	"VersionName" : "1.0",
-	"CreatedBy" : "Epic Games, Inc.",
-	"CreatedByURL" : "http://epicgames.com",
+	"CreatedBy" : "Oh-Hyun Kwon",
+	"CreatedByURL" : "https://github.com/kwonoh/OpenCL-UE4Plugin",
 	"EngineVersion" : "4.2.0",
-	"Description" : "A simulated cable component.",
-	"Category" : "Rendering.Components",
+	"Description" : "OpenCL Plugin",
+	"Category" : "Computing",
 	"EnabledByDefault" : true,
 
 	"Modules" :
