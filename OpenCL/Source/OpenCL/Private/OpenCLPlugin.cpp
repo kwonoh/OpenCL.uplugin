@@ -17,73 +17,65 @@ void OpenCLPlugin::StartupModule()
 	UE_LOG(LogOpenCL, Log, TEXT("OpenCL Info:"));
 
 	cl_uint i, j;
-	char* value;
-	size_t valueSize;
-	cl_uint platformCount;
-	cl_platform_id* platforms;
-	cl_uint deviceCount;
-	cl_device_id* devices;
-	cl_uint maxComputeUnits;
+	char* Value;
+	size_t ValueSize;
+	cl_uint NumPlatforms;
+	cl_platform_id* Platforms;
+	cl_uint NumDevices;
+	cl_device_id* Devices;
+	cl_uint MaxComputeUnits;
 
-	// get all platforms
-	clGetPlatformIDs(0, NULL, &platformCount);
-	platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * platformCount);
-	clGetPlatformIDs(platformCount, platforms, NULL);
+	clGetPlatformIDs(0, NULL, &NumPlatforms);
+	Platforms = (cl_platform_id*)malloc(sizeof(cl_platform_id) * NumPlatforms);
+	clGetPlatformIDs(NumPlatforms, Platforms, NULL);
 
-	for (i = 0; i < platformCount; i++) {
-		clGetPlatformInfo(platforms[i], CL_PLATFORM_NAME, 0, NULL, &valueSize);
-		value = (char*)malloc(valueSize);
-		clGetPlatformInfo(platforms[i], CL_PLATFORM_NAME, valueSize, value, NULL);
-		UE_LOG(LogOpenCL, Log, TEXT("Platform: %s"), ANSI_TO_TCHAR(value));
-		free(value);
+	for (i = 0; i < NumPlatforms; i++) {
+		clGetPlatformInfo(Platforms[i], CL_PLATFORM_NAME, 0, NULL, &ValueSize);
+		Value = (char*)malloc(ValueSize);
+		clGetPlatformInfo(Platforms[i], CL_PLATFORM_NAME, ValueSize, Value, NULL);
+		UE_LOG(LogOpenCL, Log, TEXT("Platform: %s"), ANSI_TO_TCHAR(Value));
+		free(Value);
 
-		// get all devices
-		clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, 0, NULL, &deviceCount);
-		devices = (cl_device_id*)malloc(sizeof(cl_device_id) * deviceCount);
-		clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, deviceCount, devices, NULL);
+		// get all Devices
+		clGetDeviceIDs(Platforms[i], CL_DEVICE_TYPE_ALL, 0, NULL, &NumDevices);
+		Devices = (cl_device_id*)malloc(sizeof(cl_device_id) * NumDevices);
+		clGetDeviceIDs(Platforms[i], CL_DEVICE_TYPE_ALL, NumDevices, Devices, NULL);
 
-		// for each device print critical attributes
-		for (j = 0; j < deviceCount; j++) {
+		for (j = 0; j < NumDevices; j++) {
+			clGetDeviceInfo(Devices[j], CL_DEVICE_NAME, 0, NULL, &ValueSize);
+			Value = (char*)malloc(ValueSize);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_NAME, ValueSize, Value, NULL);
+			UE_LOG(LogOpenCL, Log, TEXT("  Device: %s"), ANSI_TO_TCHAR(Value));
+			free(Value);
 
-			// print device name
-			clGetDeviceInfo(devices[j], CL_DEVICE_NAME, 0, NULL, &valueSize);
-			value = (char*)malloc(valueSize);
-			clGetDeviceInfo(devices[j], CL_DEVICE_NAME, valueSize, value, NULL);
-			UE_LOG(LogOpenCL, Log, TEXT("  Device: %s"), ANSI_TO_TCHAR(value));
-			free(value);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_VERSION, 0, NULL, &ValueSize);
+			Value = (char*)malloc(ValueSize);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_VERSION, ValueSize, Value, NULL);
+			UE_LOG(LogOpenCL, Log, TEXT("    Hardware version: %s"), ANSI_TO_TCHAR(Value));
+			free(Value);
 
-			// print hardware device version
-			clGetDeviceInfo(devices[j], CL_DEVICE_VERSION, 0, NULL, &valueSize);
-			value = (char*)malloc(valueSize);
-			clGetDeviceInfo(devices[j], CL_DEVICE_VERSION, valueSize, value, NULL);
-			UE_LOG(LogOpenCL, Log, TEXT("    Hardware version: %s"), ANSI_TO_TCHAR(value));
-			free(value);
+			clGetDeviceInfo(Devices[j], CL_DRIVER_VERSION, 0, NULL, &ValueSize);
+			Value = (char*)malloc(ValueSize);
+			clGetDeviceInfo(Devices[j], CL_DRIVER_VERSION, ValueSize, Value, NULL);
+			UE_LOG(LogOpenCL, Log, TEXT("    Software version: %s"), ANSI_TO_TCHAR(Value));
+			free(Value);
 
-			// print software driver version
-			clGetDeviceInfo(devices[j], CL_DRIVER_VERSION, 0, NULL, &valueSize);
-			value = (char*)malloc(valueSize);
-			clGetDeviceInfo(devices[j], CL_DRIVER_VERSION, valueSize, value, NULL);
-			UE_LOG(LogOpenCL, Log, TEXT("    Software version: %s"), ANSI_TO_TCHAR(value));
-			free(value);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_OPENCL_C_VERSION, 0, NULL, &ValueSize);
+			Value = (char*)malloc(ValueSize);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_OPENCL_C_VERSION, ValueSize, Value, NULL);
+			UE_LOG(LogOpenCL, Log, TEXT("    OpenCL C version: %s"), ANSI_TO_TCHAR(Value));
+			free(Value);
 
-			// print c version supported by compiler for device
-			clGetDeviceInfo(devices[j], CL_DEVICE_OPENCL_C_VERSION, 0, NULL, &valueSize);
-			value = (char*)malloc(valueSize);
-			clGetDeviceInfo(devices[j], CL_DEVICE_OPENCL_C_VERSION, valueSize, value, NULL);
-			UE_LOG(LogOpenCL, Log, TEXT("    OpenCL C version: %s"), ANSI_TO_TCHAR(value));
-			free(value);
-
-			// print parallel compute units
-			clGetDeviceInfo(devices[j], CL_DEVICE_MAX_COMPUTE_UNITS,
-							sizeof(maxComputeUnits), &maxComputeUnits, NULL);
-			UE_LOG(LogOpenCL, Log, TEXT("    Parallel compute units: %d"), maxComputeUnits);
+			clGetDeviceInfo(Devices[j], CL_DEVICE_MAX_COMPUTE_UNITS,
+							sizeof(MaxComputeUnits), &MaxComputeUnits, NULL);
+			UE_LOG(LogOpenCL, Log, TEXT("    Parallel compute units: %d"), MaxComputeUnits);
 		}
 
-		free(devices);
+		free(Devices);
 
 	}
 
-	free(platforms);
+	free(Platforms);
 }
 
 void OpenCLPlugin::ShutdownModule() {}

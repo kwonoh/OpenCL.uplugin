@@ -5,7 +5,7 @@ Supported Platform
 ----------------------
 
 OS X, Windows on Intel CPU/GPU, NVIDIA GPU.
-I've tested on OS X 10.10.1 (Intel Ivy Bridge, GTX 980, GT 650M) and Windows 8.1.
+I've tested on OS X 10.10.1 (Intel Ivy Bridge, GT 650M, GTX 980) and Windows 8.1.
 All suggestions for other platforms are welcome.
 
 Known Issues
@@ -39,4 +39,4 @@ Legal info
 
 Unreal® is a trademark or registered trademark of Epic Games, Inc. in the United States of America and elsewhere. Unreal® Engine, Copyright 1998 – 2014, Epic Games, Inc. All rights reserved.
 
-Plugin is completely **free** and available under [MIT open-source license](LICENSE).
+Plugin is completely free and available under [MIT open-source license](LICENSE).
