@@ -1,5 +1,10 @@
 OpenCL Plugin for Unreal Engine 4
 =============
+This plugin helps you to link OpenCL with your UE projects.
+It is easy to link with OpenCL on OS X because it's already installed as a global framework.
+But on windows it is not trivial. If you want to add/replace for other version or platform, you can replace the header files from [the Khronos OpenCL Registry](https://www.khronos.org/registry/cl/) and the OpenCL.lib files in [ThirdParty/OpenCL/Lib](https://github.com/kwonoh/OpenCL-UE4Plugin/tree/master/OpenCL/ThirdParty/OpenCL/Lib) from OpenCL SDKs of the SDK providers (Intel/ATI/NVIDIA).
+The OpenCL.lib files helps you to link with OpenCL.dll which installed on system with the drivers.
+(It is not recommended to link with OpenCL.dll directly.)
 
 Supported Platform
 ----------------------
