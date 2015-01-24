@@ -25,10 +25,12 @@ Installation
 
 1. Install NVIDIA Graphics Driver and [Intel OpenCL runtime](https://software.intel.com/en-us/articles/opencl-drivers).
 2. Copy "OpenCL" folder to "Plugins" folder under your project directory.
+3. Add "OpenCLPlugin" under "PublicDependencyModuleNames" in your *.Build.cs file to include header files from your project.
 
 ### OS X
 
 1. Copy "OpenCL" folder to "Plugins" folder under your project directory.
+2. Add "OpenCLPlugin" under "PublicDependencyModuleNames" in your *.Build.cs file to include header files from your project.
 
 Screenshots
 ----------------------
