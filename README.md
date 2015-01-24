@@ -15,7 +15,7 @@ All suggestions for other platforms are welcome.
 
 Known Issues
 ----------------------
-* On windows, It's failed to run editor on DebugGame mode.
+* On windows, It's failed to run editor on Debug mode. (Development mode works well)
 
 
 Installation
