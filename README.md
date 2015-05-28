@@ -10,7 +10,7 @@ Supported Platform
 ----------------------
 
 OS X, Windows on Intel CPU/GPU, NVIDIA GPU.
-I've tested on OS X 10.10.1 (Intel Ivy Bridge, GT 650M, GTX 980) and Windows 8.1.
+I've tested on OS X 10.10.3 (Intel Ivy Bridge, GT 650M, GTX 980) and Windows 8.1.
 All suggestions for other platforms are welcome.
 
 Known Issues

@@ -18,9 +18,10 @@ namespace UnrealBuildTool.Rules
 
 		public OpenCL(TargetInfo Target)
 		{
-			PublicIncludePaths.Add(
-				"OpenCL/Public"
-				);
+			PublicIncludePaths.AddRange( new string[] {
+				"OpenCL/Public",
+                Path.Combine(ThirdPartyPath, "OpenCL", "Include")
+            });
 
 			PublicDependencyModuleNames.AddRange(
 				new string[]
