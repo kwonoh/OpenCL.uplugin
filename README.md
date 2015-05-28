@@ -8,8 +8,7 @@ The OpenCL.lib files help you to link with OpenCL.dll which installed on system 
 
 Supported Platform
 ----------------------
-
-OS X, Windows on Intel CPU/GPU, NVIDIA GPU.
+Tested on Unreal Engine 4.7.6 in OS X, Windows on Intel CPU/GPU, NVIDIA GPU.
 I've tested on OS X 10.10.3 (Intel Ivy Bridge, GT 650M, GTX 980) and Windows 8.1.
 All suggestions for other platforms are welcome.
 
